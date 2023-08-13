@@ -15,5 +15,20 @@ public class Main {
         list.addSorted("100");
 
         list.print();
+        list.revert();
+        list.print();
+
+        LinkedList<Integer> list1 = new LinkedList<>();
+
+        list1.addSorted(1);
+        list1.addSorted(5);
+        list1.addSorted(7);
+        list1.addSorted(4);
+        list1.addSorted(11);
+        list1.addSorted(17);
+
+        list1.print();
+        list1.revert();
+        list1.print();
     }
 }

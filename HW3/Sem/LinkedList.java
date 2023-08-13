@@ -1,5 +1,7 @@
 package HW3.Sem;
 
+import HW3.Lec.List;
+
 public class LinkedList<T extends Comparable> {
     private Node root; // head
     private int size;
@@ -42,6 +44,7 @@ public class LinkedList<T extends Comparable> {
         }
         currentNode.next = new Node(value);
     }
+
 
     public boolean remove(T value) { // удаление
         if (root == null) // проверка на пустоту
@@ -121,6 +124,23 @@ public class LinkedList<T extends Comparable> {
         node2.value = temp;
     }
 
+    public void revert(){// разворот односвязного списка без значений
+        if (root != null && root.next != null){
+            Node temp = root;
+            revert(root.next, root);
+            temp.next = null;
+        }
+    }
+
+    private void revert (Node currentNode, Node previousNode){// разворот, который принимает текущую ноду и предыдущую ноду
+        if (currentNode.next == null){
+            root = currentNode;
+        }else {
+            revert(currentNode.next,currentNode);// рекурсию запускаем
+        }
+        currentNode.next = previousNode;
+
+    }
     public void quickSort() {
         quickSort(0, size - 1);
     }
@@ -153,7 +173,7 @@ public class LinkedList<T extends Comparable> {
             System.out.print(currentNode.value + " ");
             currentNode = currentNode.next;
         }
-        System.out.println("]  size:" + size);
+        System.out.println("]");
     }
 
     private class Node {
